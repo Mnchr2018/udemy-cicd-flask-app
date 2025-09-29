@@ -15,4 +15,7 @@ steps:
   - 'northamerica-northeast2-docker.pkg.dev/gcp-cicd-demo-409307/pyapprepoapp-artifact/pyappimage:latest'
   - '--region'
   - 'northamerica-northeast2'
-  - '--allow-unauthenticated'  
+  - '--allow-unauthenticated'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
