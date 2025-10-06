@@ -16,7 +16,7 @@ steps:
   - '--region'
   - 'northamerica-northeast2'
   - '--allow-unauthenticated'
-ß
+
 options:
   logging: CLOUD_LOGGING_ONLY
 
