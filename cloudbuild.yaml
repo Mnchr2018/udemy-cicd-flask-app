@@ -1,9 +1,9 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build','-t','northamerica-northeast2-docker.pkg.dev/udemy-cicd-course/pyapprepoapp-artifact/pyappimage:latest','.']
+  args: ['build','-t','${_LOCATION}/udemy-cicd-course/${_IAMGE}','.']
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push','northamerica-northeast2-docker.pkg.dev/udemy-cicd-course/pyapprepoapp-artifact/pyappimage:latest']
+  args: ['push','${_LOCATION}/udemy-cicd-course/$_{IAMGE']
 
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
@@ -12,10 +12,15 @@ steps:
   - 'deploy'
   - 'pyflaskapp'
   - '--image'
-  - 'northamerica-northeast2-docker.pkg.dev/udemy-cicd-course/pyapprepoapp-artifact/pyappimage:latest'
+  - '${_LOCATION}/udemy-cicd-course/${_IAMGE}'
   - '--region'
   - 'northamerica-northeast2'
   - '--allow-unauthenticated'
 
 options:
   logging: CLOUD_LOGGING_ONLY
+
+substitutions:
+  _IAMGE: pyapprepoapp-artifact/pyappimage:latest
+  _LOCATION: northamerica-northeast2-docker.pkg.dev
+
