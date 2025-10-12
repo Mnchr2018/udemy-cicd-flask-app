@@ -1,26 +1,23 @@
+######### COMPLETE EXAMPLE 1  #########
+
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build','-t','${_LOCATION}/${_PROJECT}/${_IMAGE}','.']
+  - name: "bash"
+    script: |
+      #!/usr/bin/env bash
+      echo "Hello World"
+  - name: "python"
+    script: |
+      #!/usr/bin/env python
+      print('Hello World from Python')
 
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push','${_LOCATION}/${_PROJECT}/${_IMAGE}']
 
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: gcloud
-  args:
-  - 'run'
-  - 'deploy'
-  - 'pyflaskapp'
-  - '--image'
-  - '${_LOCATION}/${_PROJECT}/${_IMAGE}'
-  - '--region'
-  - 'northamerica-northeast2'
-  - '--allow-unauthenticated'
+######### COMPLETE EXAMPLE 2  #########
 
-options:
-  logging: CLOUD_LOGGING_ONLY
-
-substitutions:
-  _IMAGE: pyapprepoapp-artifact/pyappimage:latest
-  _LOCATION: northamerica-northeast2-docker.pkg.dev
-  _PROJECT: udemy-cicd-course
+steps:
+  - name: "bash"
+    script: |
+      #!/usr/bin/env bash
+      echo "Hello World" > dummy.txt
+      echo "Hello World again" >> dummy.txt
+      echo "Opening dummy.txt"
+      cat dummy.txt
