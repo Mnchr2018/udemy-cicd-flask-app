@@ -1,26 +1,19 @@
 ######### COMPLETE EXAMPLE 1  #########
 
 steps:
-  - name: "bash"
+  - name: "ubuntu"
+    env:
+      - "NAME=John"
     script: |
       #!/usr/bin/env bash
-      echo "Hello World"
-  - name: "python"
-    script: |
-      #!/usr/bin/env python
-      print('Hello World from Python')
+      echo "Hello $NAME"
 
-
-######### COMPLETE EXAMPLE 2  #########
-
-steps:
-  - name: "bash"
+  - name: "ubuntu"
+    env:
+      - "PROJ_ID=$PROJECT_ID"
     script: |
       #!/usr/bin/env bash
-      echo "Hello World" > dummy.txt
-      echo "Hello World again" >> dummy.txt
-      echo "Opening dummy.txt"
-      cat dummy.txt
+      echo "Your project ID is $PROJ_ID"
 
 
 options:
