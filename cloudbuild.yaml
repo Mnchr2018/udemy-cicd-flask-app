@@ -5,26 +5,26 @@ steps:
     - -c
     - |
       set -x
-      echo "Logging in as $Docker-User"
-      docker login --username "$Docker-User" --password "$Docker-Password"
+      echo "Logging in as $dockerUser"
+      docker login --username "$dockerUser" --password "$dockerPassword"
 
 
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
-  args: ['-c', 'docker build -t $$Docker-User/pyappimage:latest .']
-  secretEnv: ['Docker-User']
+  args: ['-c', 'docker build -t $$dockerUser/pyappimage:latest .']
+  secretEnv: ['dockerUser']
 
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
-  args: ['-c', 'docker push $$Docker-User/pyappimage:latest']
-  secretEnv: ['Docker-User']
+  args: ['-c', 'docker push $$dockerUser/pyappimage:latest']
+  secretEnv: ['dockerUser']
 
 availableSecrets:
   secretManager:
-  - versionName: projects/${PROJECT_ID}/secrets/Docker-User/versions/3
-    env: 'Docker-User'
-  - versionName: projects/${PROJECT_ID}/secrets/Docker-Password/versions/2
-    env: 'Docker-Password'
+  - versionName: projects/${PROJECT_ID}/secrets/dockerUser/versions/3
+    env: 'dockerUser'
+  - versionName: projects/${PROJECT_ID}/secrets/dockerPassword/versions/2
+    env: 'dockerPassword'
 
 
 options:
