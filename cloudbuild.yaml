@@ -1,8 +1,13 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
-  args: ['-c', 'docker login --username=$$Docker-User --password=$$Docker-Password']
-  secretEnv: ['Docker-User', 'Docker-Password']
+  args:
+    - -c
+    - |
+      set -x
+      echo "Logging in as $Docker-User"
+      docker login --username "$Docker-User" --password "$Docker-Password"
+
 
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
