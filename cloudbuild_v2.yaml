@@ -1,0 +1,20 @@
+######### COMPLETE EXAMPLE 1  #########
+
+steps:
+  - name: "ubuntu"
+    env:
+      - "NAME=John"
+    script: |
+      #!/usr/bin/env bash
+      echo "Hello $NAME"
+
+  - name: "ubuntu"
+    env:
+      - "PROJ_ID=$PROJECT_ID"
+    script: |
+      #!/usr/bin/env bash
+      echo "Your project ID is $PROJ_ID"
+
+
+options:
+  logging: CLOUD_LOGGING_ONLY
