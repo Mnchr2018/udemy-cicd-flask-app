@@ -21,9 +21,9 @@ steps:
 
 availableSecrets:
   secretManager:
-  - versionName: projects/${PROJECT_ID}/secrets/dockerUser/versions/3
+  - versionName: projects/${PROJECT_ID}/secrets/dockerUser/versions/1
     env: 'dockerUser'
-  - versionName: projects/${PROJECT_ID}/secrets/dockerPassword/versions/2
+  - versionName: projects/${PROJECT_ID}/secrets/dockerPassword/versions/1
     env: 'dockerPassword'
 
 
